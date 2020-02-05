@@ -16,3 +16,9 @@ data/**/*.json
 data/**/*.parquet
 data/**/*.db
 data/**/*.jpg
+
+# random files from the data repository
+data/**/_SUCCESS
+data/**/_committed*
+data/**/_started*
+data/**/part-*
