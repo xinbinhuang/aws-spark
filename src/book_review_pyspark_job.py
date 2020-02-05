@@ -14,7 +14,7 @@ def create_spark_session() -> SparkSession:
     """Create spark session.
 
     Returns:
-        spark (SparkSession) - spark session connected to AWS EMR
+        spark (SparkSession): spark session connected to AWS EMR
             cluster
     """
     spark = SparkSession.builder.config(
@@ -67,8 +67,8 @@ def transform_book_data(df: DataFrame) -> DataFrame:
 def load_data(df: DataFrame, output_path: str) -> None:
     """Load the aggregated book revie data into a S3 bucket
 
-    Arguments
-        output_path (str) - AWS S3 bucket for writing processed data
+    Arguments:
+        output_path (str): AWS S3 bucket for writing processed data
     """
     df.write.mode("overwrite").save(output_path)
 
