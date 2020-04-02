@@ -1,0 +1,11 @@
+aws emr create-cluster --name "Book review spark cluster job" \
+    --release-label emr-5.24.1 \
+    --applications Name=Spark \
+    --log-uri s3://aws-spark-log \
+    --ec2-attributes KeyName=emr-key \
+    --instance-type m5.xlarge \
+    --instance-count 2 \
+    --configurations file://./emr_spark_py3_conf.json \
+    --steps Type=Spark,Name="Book Review Job",ActionOnFailure=CONTINUE,Args=[--deploy-mode,cluster,--master,yarn,s3://aws-spark-script/book_review_pyspark_job.py,s3://aws-spark-output/book-aggregates] \
+    --use-default-roles \
+    --auto-terminate
